@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="imc.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Ramabhadra&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="shortcut icon" href="image-logo.png" type="image/png">
+    <title>calcul IMC | AZCalculatrice</title>
+    <script type="text/javascript">
+       function effacer(){
+
+            var clear = document.querySelector('button');
+            var inputs = document.querySelectorAll('input');
+            var pclear = document.querySelector('#resultat').innerHTML = ' ';
+            var dclear = document.querySelector('#resultat2').innerHTML = ' ';
+            clear.addEventListener('click',() =>{
+                inputs.forEach(input => input.value = '');
+            });
+       }
+       
+    // ********************************** calcul imc ********************//
+
+       function imc(){
+
+              var a = document.getElementById('inp1').value;
+              var poids = document.getElementById('inp2').value;
+              var imc = (poids / (Math.pow(a,2)/10000)).toFixed(4);
+
+          
+
+            if(imc<18.5){
+                    document.getElementById('resultat2').innerHTML = "<span style='font-size:30px ; font-weight:bolder ; color: rgba(103, 146, 240, 0.979) ; '> Maigreur  </span> ";
+           }else if(imc<25){
+                    document.getElementById('resultat2').innerHTML = "<span style='font-size:30px ; font-weight:bolder ; color: rgba(107, 224, 101, 0.979) ; '> Normal  </span> ";
+               }else if(imc<30){
+                    document.getElementById('resultat2').innerHTML = "<span style='font-size:30px ; font-weight:bolder ; color: rgb(244, 175, 97) ; '> Surpoids </span> ";
+               }else if(imc<40){
+                    document.getElementById('resultat2').innerHTML = "<span style='font-size:30px ; font-weight:bolder ; color: orange ; '> Obésité modérée  </span> ";
+               }else{
+                    document.getElementById('resultat2').innerHTML = "<span style='font-size:30px ; font-weight:bolder ; color: rgba(244, 58, 11, 0.979) ; '> Obésité sévère  </span> ";
+               }
+            if( isNaN(a) == true || isNaN(poids)== true  || isNaN(imc)== true){
+                  document.getElementById('resultat').innerHTML = "<span style='font-weight:bolder ; color: red ;'> Remplissez les champs </span>" ;
+                  document.getElementById('resultat2').innerHTML = "<span style='font-size:35px ; font-weight:bolder ; color: red ;'>  </span>" ;
+           }else{
+                
+                document.getElementById('resultat').innerHTML = "<span style='font-weight:bolder ; color: green ;'> Votre IMC = " +  imc + "</span>" ;
+           } 
+               
+       }
+      
+    </script>
+
+
+
+
+</head>
+<body>
+
+    <header>
+        <div class="header-control">
+            <a href="index.html" id="acceuil">  
+                <span class="material-symbols-outlined" id="iconacceuil"> home </span> 
+                <span id="name">acceuil</span>
+            </a>
+        </div>
+        <style>
+            .material-symbols-outlined {
+              font-variation-settings:
+              'FILL' 0,
+              'wght' 400,
+              'GRAD' 48,
+              'opsz' 0,
+              
+            }
+
+            </style>
+    </header>
+
+    <div class="content">
+        <h1 id="titre">Calcul IMC</h1>
+    </div>
+
+
+
+    <div id="content2">
+       <p id="textp">
+             <p> Calcul de l'Indice de Masse Corporelle (IMC), c'est  le calcul de votre poids idéal <br> en rapport avec votre taille. remplissez les champs </p>
+            <label for="number1">Votre Taille : <br> <span style="font-size: 14px ; color: grey  ; ">en centimètre</span> </label>
+            <input type="text" id="inp1" name="inp1" placeholder="" required >
+            <br>
+            <label for="number2">Votre Poids  : <br> <span style="font-size: 14px ; color: grey ; ">en kilogramme</span></label>
+            <input type="text" id="inp2" name="inp2" placeholder="" required >
+            <br>
+
+           <br> 
+       </p>
+            <br>
+            <!--effacer / reset -->
+            <button onclick="effacer()">effacer</button>
+           <!--Le resultat-->
+           
+           <button onclick="imc()">resultat</button>
+            <br>
+           <div>
+               <p id="resultat"> </p>
+               <p id="resultat2"> </p>
+           </div>
+    </div>
+</body>
+</html>

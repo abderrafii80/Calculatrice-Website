@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="masse.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Ramabhadra&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="shortcut icon" href="image-logo.png" type="image/png">
+    <title>Convertisseur de masse | AZCalculatrice</title>
+    <script type="text/javascript">
+       function effacer(){
+
+            var clear = document.querySelector('button');
+            var inputs = document.querySelectorAll('input');
+            var pclear = document.querySelector('#resultat').innerHTML = ' ';
+            var pclear = document.querySelector('#resultat1').innerHTML = ' ';
+            var pclear = document.querySelector('#resultat2').innerHTML = ' ';
+            clear.addEventListener('click',() =>{
+                inputs.forEach(input => input.value = '');
+            });
+       }
+
+       
+
+           
+
+       function convert(){
+             const value1El = document.getElementById('inp1');
+            const unit1El = document.getElementById('first-unit');
+            const value2El = document.getElementById('resultat');
+            const unit2El = document.getElementById('second-unit');
+            const permut = document.getElementById('icon');
+      
+            let btn = document.getElementById('btn-convert');
+
+      // const convertValue = () => {
+            let value1 = value1El.value;
+            let unit1 = unit1El.value ;
+            let unit2 = unit2El.value ;
+
+
+            let value1IntegealUnit ;
+            let convertedValue ;
+
+            switch(unit1){
+                case "t": 
+                    value1IntegealUnit = value1 * 1000000;
+                    break ;
+                case "q":
+                    value1IntegealUnit = value1 * 100000 ;
+                    break ;    
+                case "Kg": 
+                    value1IntegealUnit = value1 * 1000 ;
+                    break ; 
+                case "hg":
+                    value1IntegealUnit = value1 * 100 ;
+                    break ; 
+                case "dag":
+                    value1IntegealUnit = value1 * 10 ;
+                    break ; 
+                case "dg":
+                    value1IntegealUnit = value1 / 10 ;
+                    break ; 
+                case "cg":
+                    value1IntegealUnit = value1 / 100 ;
+                    break ;                 
+                case "mg": 
+                    value1IntegealUnit = value1 * 0.001;
+                    break ; 
+                case "μg": 
+                    value1IntegealUnit = value1 * 0.000001;
+                    break ;   
+                default : 
+                    value1IntegealUnit = value1 ;   
+            }
+
+
+            switch(unit2){
+                case "t":
+                    convertedValue = value1IntegealUnit / 1000000 ;
+                    break ;
+                case "q":
+                    convertedValue = value1IntegealUnit / 100000 ;
+                    break ;    
+                case "Kg":
+                    convertedValue = value1IntegealUnit / 1000 ;
+                    break ;
+                case "hg":
+                    convertedValue = value1IntegealUnit / 100 ;
+                    break ; 
+                case "dag":
+                    convertedValue = value1IntegealUnit / 10 ;
+                    break ; 
+                case "dg":
+                    convertedValue = value1IntegealUnit * 10 ;
+                    break ; 
+                case "cg":
+                    convertedValue = value1IntegealUnit * 100 ;
+                    break ;             
+                case "mg":
+                    convertedValue = value1IntegealUnit * 1000 ;
+                    break ;  
+                case "μg":
+                    convertedValue = value1IntegealUnit * 1000000 ;
+                    break ;  
+                default: 
+                     convertedValue = value1IntegealUnit ;                  
+                        
+            }
+
+            value2El.innerHTML = `${value1} ${unit1}=${convertedValue} ${unit2}` ;
+        } 
+        
+        // ********************** icon swap <=> *********************
+            function swap(){
+
+                var first = document.getElementById('first-unit');
+                var second = document.getElementById('second-unit');
+                var temp ;
+
+                temp = second.value;
+                second.value = first.value;
+                first.value = temp ;
+            }
+            
+
+            
+        //===============================================================
+      
+    </script>
+
+
+
+
+</head>
+<body>
+    
+    <header>
+        <div class="header-control">
+            <a href="index.html" id="acceuil">  
+                <span class="material-symbols-outlined" id="iconacceuil"> home </span> 
+                <span id="name">acceuil</span>
+            </a>
+        </div>
+        <style>
+            .material-symbols-outlined {
+              font-variation-settings:
+              'FILL' 0,
+              'wght' 400,
+              'GRAD' 48,
+              'opsz' 0,
+              
+            }
+
+            </style>
+    </header>
+
+
+
+    <div class="content">
+        <h1 id="titre">Masse</h1>
+    </div>
+
+
+
+    <div id="content2">
+       <p id="textp">
+           <label for="number">Saisir la masse  : </label>   
+            <input type="number" id="inp1" name="inp1" min="0" required >
+           <br>
+            
+       </p>
+       
+              
+                <select name="first-unit" id="first-unit">
+                    <option value="t">tonne</option>
+                    <option value="q">quinetal</option>
+                    <option value="Kg">kilogramme</option> 
+                    <option value="hg">hectogramme</option>
+                    <option value="dag">decagramme</option>
+                    <option value="g">gramme</option> 
+                    <option value="dg">decigramme</option>  
+                    <option value="cg">centigramme</option> 
+                    <option value="mg">milligramme</option> 
+                    <option value="μg">microgramme</option>       
+                </select>
+                &nbsp;
+
+                <!--<button onclick="swap()">swap</button>-->
+               <span class="material-symbols-outlined" id="icon" onclick="swap()" >sync_alt </span> 
+               
+                &nbsp;
+
+              
+                <select name="second-unit" id="second-unit">
+                    <option value="t">tonne</option>
+                    <option value="q">quinetal</option>
+                    <option value="Kg">kilogramme</option> 
+                    <option value="hg">hectogramme</option>
+                    <option value="dag">decagramme</option>
+                    <option value="g">gramme</option> 
+                    <option value="dg">decigramme</option>  
+                    <option value="cg">centigramme</option> 
+                    <option value="mg">milligramme</option> 
+                    <option value="μg">microgramme</option>     
+                </select>
+             
+              
+             <br>
+             <br>
+        <div class="result">
+            <!--effacer / reset -->
+            <button onclick="effacer()">effacer</button>
+           <!--Le resultat-->
+           <button  onclick="convert()">resultat</button>
+        </div>   
+            <br>
+           <div>
+               <p id="resultat"> </p>
+               <p id="resultat1"></p>
+               <p id="resultat2"></p>
+           </div>
+    </div>
+</body>
+</html>

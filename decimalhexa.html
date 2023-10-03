@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="decimalhexa.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Ramabhadra&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="shortcut icon" href="image-logo.png" type="image/png">
+    <title>Convertir Decimal a Hexadecimal | AZCalculatrice</title>
+    <script type="text/javascript">
+       function effacer(){
+
+            var clear = document.querySelector('button');
+            var inputs = document.querySelectorAll('input');
+            var pclear = document.querySelector('#resultat').innerHTML = ' ';
+            var pclear = document.querySelector('#resultat1').innerHTML = ' ';
+            var pclear = document.querySelector('#resultat2').innerHTML = ' ';
+            clear.addEventListener('click',() =>{
+                inputs.forEach(input => input.value = '');
+            });
+       }
+       // convertir un nombre decimal (--)10 --> binaire(10101)2 //
+       function decimal(){
+
+            var a = parseInt(document.getElementById('inp1').value);
+            var binaire = parseInt(a,).toString(2);         // decimal ---> binaire ;
+            var hexdecimal = parseInt(a,).toString(16).toUpperCase();    // decimal --> hexadecimal ;
+            var octal = parseInt(a,).toString(8);         //  decimal --> octal ;
+            
+            if(isNaN( a )== true){
+                document.getElementById('resultat').innerHTML = "<span style = 'font-size : 35px ; font-weight : bold ; color : red ;' > Saisir un nombre decimal , pas une chaine de caractére </span>";
+                document.getElementById('resultat1').innerHTML = " ";
+                document.getElementById('resultat2').innerHTML = " "; 
+            }else{
+            document.getElementById('resultat').innerHTML = "<span style = 'font-size : 24px ; font-weight : bold ; color : green ;' > Hexadecimal = ("+hexdecimal+")<sub>16</sub></span>";
+            document.getElementById('resultat1').innerHTML = "<span style = 'font-size : 20px ; font-weight : bold ; color : black ;' > Binaire = ("+binaire+")<sub>2</sub></span>";
+            document.getElementById('resultat2').innerHTML = "<span style = 'font-size : 20px ; font-weight : bold ; color : black ;' > Octal = ("+octal+")<sub>8</sub></span>";
+            }
+
+       }
+        
+      
+    </script>
+
+
+
+
+</head>
+<body>
+
+
+    <header>
+        <div class="header-control">
+            <a href="index.html" id="acceuil">  
+                <span class="material-symbols-outlined" id="iconacceuil"> home </span> 
+                <span id="name">acceuil</span>
+            </a>
+        </div>
+        <style>
+            .material-symbols-outlined {
+              font-variation-settings:
+              'FILL' 0,
+              'wght' 400,
+              'GRAD' 48,
+              'opsz' 0,
+              
+            }
+
+            </style>
+    </header>
+
+
+    <div class="content">
+        <h1 id="titre">Decimal - Hexadecimal</h1>
+    </div>
+
+
+
+    <div id="content2">
+       <p id="textp">
+           <p> Convertir un nombre en <strong style="color: rgb(119, 66, 211) ; font-weight:bolder;">decimal ( )<sub>10</sub></strong>  vers <strong style="color: rgb(119, 66, 211) ; font-weight: bolder;">hexadecimal ( )<sub>16</sub></strong>  </p>
+            <label for="number1">Saisir le nombre </label>
+           <input type="text" id="inp1" name="inp1"  required >
+           <br>
+           <br> 
+       </p>
+            <br>
+            <!--effacer / reset -->
+            <button onclick="effacer()">effacer</button>
+           <!--Le resultat-->
+           
+           <button onclick="decimal()">convertir</button>
+            <br>
+           <div>
+               <p id="resultat"> </p>
+               <p id="resultat1"></p>
+               <p id="resultat2"></p>
+           </div>
+    </div>
+</body>
+</html>

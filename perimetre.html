@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="perimetre.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Ramabhadra&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="shortcut icon" href="image-logo.png" type="image/png">
+    <title>Calcul Périmetre | AZCalculatrice</title>
+    <script type="text/javascript">
+       function effacer(){
+
+            var clear = document.querySelector('button');
+            var inputs = document.querySelectorAll('input');
+            var pclear = document.querySelector('#resultat').innerHTML = ' ';
+            clear.addEventListener('click',() =>{
+                inputs.forEach(input => input.value = '');
+            });
+       }
+       
+    // ********************************** equation de deuxieme degree ********************//
+
+       function perimetre(){
+
+              var a = document.getElementById('inp1').value;
+
+           if( isNaN(a) == true || a== ' ' ){
+                  document.getElementById('resultat').innerHTML = "<span style='font-size:35px ; font-weight:bolder ; color: red ;'> Champs incorrects </span>" ;
+           }else{
+                var perimetre = (2 * Math.PI * a).toFixed(3) ;
+                document.getElementById('resultat').innerHTML = "<span style='font-size:35px ; font-weight:bolder ; color: green ;'> Périmetre = " + perimetre + "</span>" ;
+           }
+       }
+      
+    </script>
+
+
+
+
+</head>
+<body>
+
+    <header>
+        <div class="header-control">
+            <a href="index.html" id="acceuil">  
+                <span class="material-symbols-outlined" id="iconacceuil"> home </span> 
+                <span id="name">acceuil</span>
+            </a>
+        </div>
+        <style>
+            .material-symbols-outlined {
+              font-variation-settings:
+              'FILL' 0,
+              'wght' 400,
+              'GRAD' 48,
+              'opsz' 0,
+              
+            }
+
+            </style>
+    </header>
+
+
+
+    <div class="content">
+        <h1 id="titre">Périmetre</h1>
+    </div>
+
+
+
+    <div id="content2">
+       <p id="textp">
+             <p> Calcul d'un Périmetre, est la longueur totale du contour de cette dernière. <br><br> remplissez les champs  </p>
+            <label for="number1">Rayon : </label>
+            <input type="number" id="inp1" name="inp1" placeholder="" required >
+            <br>
+
+           <br> 
+       </p>
+            <br>
+            <!--effacer / reset -->
+            <button onclick="effacer()">effacer</button>
+           <!--Le resultat-->
+           
+           <button onclick="perimetre()">resultat</button>
+            <br>
+           <div>
+               <p id="resultat"> </p>
+           </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pourcentage.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Ramabhadra&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="shortcut icon" href="image-logo.png" type="image/png">
+    <title>Calcul Pourcentage | AZCalculatrice</title>
+    <script type="text/javascript">
+       function effacer(){
+
+            var clear = document.querySelector('button');
+            var inputs = document.querySelectorAll('input');
+            var pclear = document.querySelector('#resultat').innerHTML = ' ';
+            clear.addEventListener('click',() =>{
+                inputs.forEach(input => input.value = '');
+            });
+       }
+       
+    // ********************************** equation de deuxieme degree ********************//
+
+       function afficher(){
+
+              var a = document.getElementById('inp1').value;
+              var b = document.getElementById('inp2').value;
+
+           if( isNaN(a) == true || isNaN(b)== true ){
+                  document.getElementById('resultat').innerHTML = "<span style='font-size:30px ; font-weight:bolder ; color: red ;'> Saisir des nombres </span>" ;
+           }else{
+                var pourcentage = (a*b)/100 ;
+                document.getElementById('resultat').innerHTML = "<span style='font-size:35px ; font-weight:bolder ; color: green ;'>" + pourcentage + "</span>" ;
+           }
+       }
+      
+    </script>
+
+
+
+
+</head>
+<body>
+
+    <header>
+        <div class="header-control">
+            <a href="index.html" id="acceuil">  
+                <span class="material-symbols-outlined" id="iconacceuil"> home </span> 
+                <span id="name">acceuil</span>
+            </a>
+        </div>
+        <style>
+            .material-symbols-outlined {
+              font-variation-settings:
+              'FILL' 0,
+              'wght' 400,
+              'GRAD' 48,
+              'opsz' 0,
+              
+            }
+
+            </style>
+    </header>
+
+    <div class="content">
+        <h1 id="titre">Pourcentage</h1>
+    </div>
+
+
+
+    <div id="content2">
+       <p id="textp">
+             <p> Calcul d'un pourcentage, une opération mathématique simple <br> lorsqu'on a la bonne calculatrice , remplissez les champs  </p>
+            <label for="number1">Montant : </label>
+            <input type="number" id="inp1" name="inp1" placeholder="" required >
+            <br>
+            <label for="number2">Pourcentage (%) :</label>
+            <input type="number" id="inp2" name="inp2" placeholder="" required >
+
+           <br> 
+       </p>
+            <br>
+            <!--effacer / reset -->
+            <button onclick="effacer()">effacer</button>
+           <!--Le resultat-->
+           
+           <button onclick="afficher()">resultat</button>
+            <br>
+           <div>
+               <p id="resultat"> </p>
+           </div>
+    </div>
+</body>
+</html>

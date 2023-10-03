@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="equation2deg.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Ramabhadra&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="shortcut icon" href="image-logo.png" type="image/png">
+    <title>Equation 2 degree | AZCalculatrice</title>
+    <script type="text/javascript">
+       function effacer(){
+
+            var clear = document.querySelector('button');
+            var inputs = document.querySelectorAll('input');
+            var pclear = document.querySelector('#resultat').innerHTML = ' ';
+            clear.addEventListener('click',() =>{
+                inputs.forEach(input => input.value = '');
+            });
+       }
+       
+    // ********************************** equation de deuxieme degree ********************//
+
+       function afficher(){
+             var delta ; 
+             var res ;
+             var x1 , x2 ;
+             var a = parseInt(document.getElementById('inp1').value);
+             var b = parseInt(document.getElementById('inp2').value);
+             var c = parseInt(document.getElementById('inp3').value);
+         
+             // delta 
+           delta = Math.pow(b,2) - 4*a*c ;
+           // if delta == 0 
+           
+
+           if(delta == 0){
+                x = -b/2*a ;
+                document.getElementById('resultat').innerHTML = " <span style = 'font-weight: bold ; color: black ;'>" + a +" X <sup>2</sup> + "+ b +" X + "+ c + " = 0 </span> <br> <span> X = "+ a + " </span>" ;
+           }else if(delta > 0){
+                x1 = ((-b - Math.sqrt(delta))/2*a).toFixed(2) ;
+                x2 = ((-b + Math.sqrt(delta))/2*a).toFixed(2) ;
+                document.getElementById('resultat').innerHTML = "<span style = 'font-weight: bold ; color: black ;'>" + a +" X <sup>2</sup> + "+ b +" X + "+ c + " = 0 </span> <br> <span> X <sub>1</sub> = "+ x1 + "  <br>  X <sub>2</sub> = "+ x2 + " </span>" ;
+           }else{
+             document.getElementById('resultat').innerHTML = "  <span style = 'font-weight: bold ; color: black ;'>" + a +" X <sup>2</sup> + "+ b +" X + "+ c + " = 0 </span> <br> <span style = 'font-size: 35px ; font-weight: bold ; color : red ;'> L'equation n'as pas de solution </span>"
+           }
+           if( isNaN(a) == true || isNaN(b)== true || isNaN(c)==true  ){
+                  document.getElementById('resultat').innerHTML = "<span style='font-size:35px ; font-weight:bolder ; color: red ;'> Champs incorrects </span>" ;
+                }
+       }
+      
+    </script>
+
+
+
+
+</head>
+<body>
+
+    <header>
+        <div class="header-control">
+            <a href="index.html" id="acceuil">  
+                <span class="material-symbols-outlined" id="iconacceuil"> home </span> 
+                <span id="name">acceuil</span>
+            </a>
+        </div>
+        <style>
+            .material-symbols-outlined {
+              font-variation-settings:
+              'FILL' 0,
+              'wght' 400,
+              'GRAD' 48,
+              'opsz' 0,
+              
+            }
+
+            </style>
+    </header>
+
+    <div class="content">
+        <h1 id="titre">Equation de degree 2</h1>
+    </div>
+
+
+
+    <div id="content2">
+       <p id="textp">
+             <p> Resoudre l'equation de deuxieme degree : <strong>a</strong>X <sup>2</sup> + <strong>b</strong>X + <strong>c</strong> </p>
+            <label for="number1">Saisir a : </label>
+            <input type="text" id="inp1" name="inp1"  required >
+            &nbsp;
+            <label for="number2">Saisir b : </label>
+            <input type="text" id="inp2" name="inp2" required >
+            &nbsp;
+            <label for="number3">Saisir c : </label>
+            <input type="text" id="inp3" name="inp3"  required >
+           <br>
+           <br> 
+       </p>
+            <br>
+            <!--effacer / reset -->
+            <button onclick="effacer()">effacer</button>
+           <!--Le resultat-->
+           
+           <button onclick="afficher()">resultat</button>
+            <br>
+           <div>
+               <p id="resultat"> </p>
+           </div>
+    </div>
+</body>
+</html>
